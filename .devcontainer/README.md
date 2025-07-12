@@ -67,7 +67,7 @@ VS Code Dev Container設定:
 ### コンテナビルドエラー
 ```bash
 # キャッシュクリアして再ビルド
-docker-compose -f .devcontainer/compose.yml build --no-cache
+docker compose -f .devcontainer/compose.yml build --no-cache
 ```
 
 ### mise installエラー

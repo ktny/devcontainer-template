@@ -1,10 +1,14 @@
 [tools]
-node = "lts"
+node = "latest"
 python = "latest"
 github-cli = "latest"
 ripgrep = "latest"
 jq = "latest"
 fzf = "latest"
+claude = "latest"
+
+[env]
+_.file = '.env'
 
 [settings]
 not_found_auto_install = true

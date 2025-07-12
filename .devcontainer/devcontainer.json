@@ -3,9 +3,7 @@
   "dockerComposeFile": "compose.yml",
   "service": "devcontainer",
   "workspaceFolder": "/workspace",
-  
   "features": {},
-  
   "customizations": {
     "vscode": {
       "extensions": [
@@ -18,12 +16,8 @@
       }
     }
   },
-  
-  "postCreateCommand": "mise install && mise doctor",
-  
   "mounts": [
     "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached"
   ],
-  
   "remoteUser": "vscode"
 }
