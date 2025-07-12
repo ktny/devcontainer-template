@@ -1,0 +1,10 @@
+[tools]
+node = "lts"
+python = "latest"
+github-cli = "latest"
+ripgrep = "latest"
+jq = "latest"
+fzf = "latest"
+
+[settings]
+not_found_auto_install = true
