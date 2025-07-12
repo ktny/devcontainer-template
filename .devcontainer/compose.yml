@@ -6,7 +6,8 @@ services:
     volumes:
       - ../:/workspace:cached
       - ~/.ssh/authorized_keys:/home/vscode/.ssh/authorized_keys:cached
-      - ~/.config/gh/hosts.yml:/home/vscode/.config/gh/hosts.yml:cached
+      - ~/.config/gh:/home/vscode/.config/gh:cached
       - ~/.gitconfig:/home/vscode/.gitconfig:cached
     command: sleep infinity
+    working_dir: /workspace
     init: true

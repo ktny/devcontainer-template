@@ -3,7 +3,10 @@ FROM debian:bookworm-slim
 ARG USERNAME=vscode
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
-ENV PATH="/home/$USERNAME/.local/bin:$PATH"
+ENV MISE_DATA_DIR="/usr/local/share/mise"
+ENV PATH="/usr/local/share/mise/shims:${PATH}"
+WORKDIR /workspace
+SHELL ["/bin/bash", "-c"]
 
 RUN apt update && export DEBIAN_FRONTEND=noninteractive \
     && apt install -y --no-install-recommends \
@@ -20,7 +23,12 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
 
-RUN curl https://mise.run | MISE_INSTALL_PATH=/usr/local/bin/mise sh
-RUN mise trust && mise install
+RUN curl https://mise.run | MISE_INSTALL_PATH=/usr/local/bin/mise sh \
+    && mise trust && mise install
+
+# ENV PATH="/root/.local/share/mise/shims:${PATH}"
+# ENV MISE_DATA_DIR="/root/.local/share/mise"
+
+# RUN echo 'eval "$(/usr/local/bin/mise activate bash)"' >> ~/.bashrc
 
 USER $USERNAME
