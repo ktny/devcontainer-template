@@ -1,22 +1,17 @@
 {
   "name": "Dev Container Template",
-  "dockerComposeFile": "../compose.yml",
+  "dockerComposeFile": "../compose.yml", 
   "service": "dev",
   "remoteUser": "vscode",
   "workspaceFolder": "/workspace",
-  "features": {},
+  
   "customizations": {
     "vscode": {
       "extensions": [
         "editorconfig.editorconfig",
-        "esbenp.prettier-vscode",
-        "dbaeumer.vscode-eslint",
-        "ms-python.python",
-        "charliermarsh.ruff"
-      ],
-      "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash"
-      }
+        "esbenp.prettier-vscode", 
+        "dbaeumer.vscode-eslint"
+      ]
     }
   }
 }
