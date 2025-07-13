@@ -1,0 +1,15 @@
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    container_name: dev
+    volumes:
+      - ./:/workspace
+      - ~/.ssh:/home/vscode/.ssh:ro
+      - ~/.gitconfig:/home/vscode/.gitconfig:ro
+      - ~/.config/gh:/home/vscode/.config/gh:ro
+      - ~/.claude:/home/vscode/.claude
+    command: sleep infinity
+    working_dir: /workspace
+    init: true
