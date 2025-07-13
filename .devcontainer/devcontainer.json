@@ -1,16 +1,31 @@
 {
   "name": "Dev Container Template",
-  "dockerComposeFile": "../compose.yml", 
-  "service": "dev",
+  "dockerFile": "Dockerfile",
+  "context": "..",
   "remoteUser": "vscode",
   "workspaceFolder": "/workspace",
   "postCreateCommand": "mise trust && sudo /usr/local/bin/init-firewall.sh",
-  // "postCreateCommand": "mise trust",
+  "runArgs": [
+    "--cap-add=NET_ADMIN",
+    "--cap-add=NET_RAW"
+  ],
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,readonly",
+    "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,readonly",
+    "source=${localEnv:HOME}/.config/gh,target=/home/vscode/.config/gh,type=bind,readonly",
+    "source=${localEnv:HOME}/.claude,target=/home/vscode/.claude,type=bind",
+    "source=/etc/ssl/certs/ca-certificates.crt,target=/etc/ssl/certs/ca-certificates.crt,type=bind,readonly"
+  ],
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=delegated",
+  "containerEnv": {
+    "NODE_EXTRA_CA_CERTS": "/etc/ssl/certs/ca-certificates.crt",
+    "CLAUDE_CONFIG_DIR": "/home/vscode/.claude"
+  },
   "customizations": {
     "vscode": {
       "extensions": [
         "editorconfig.editorconfig",
-        "esbenp.prettier-vscode", 
+        "esbenp.prettier-vscode",
         "dbaeumer.vscode-eslint"
       ]
     }

@@ -16,6 +16,7 @@ RUN apt update && export DEBIAN_FRONTEND=noninteractive \
         ipset \
         iproute2 \
         dnsutils \
+        jq \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*
 
