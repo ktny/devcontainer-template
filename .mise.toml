@@ -2,7 +2,6 @@
 node = "lts"
 github-cli = "latest"
 ripgrep = "latest"
-fzf = "latest"
 neovim = "latest"
 claude = "latest"
 
