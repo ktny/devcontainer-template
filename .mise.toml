@@ -2,8 +2,8 @@
 node = "lts"
 github-cli = "latest"
 ripgrep = "latest"
-jq = "latest"
 fzf = "latest"
+neovim = "latest"
 claude = "latest"
 
 [env]
