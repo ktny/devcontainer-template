@@ -14,6 +14,7 @@
     "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,readonly",
     "source=${localEnv:HOME}/.config/gh,target=/home/vscode/.config/gh,type=bind,readonly",
     "source=${localEnv:HOME}/.claude,target=/home/vscode/.claude,type=bind",
+    "source=claude-code-bashhistory-${devcontainerId},target=/commandhistory,type=volume",
     "source=/etc/ssl/certs/ca-certificates.crt,target=/etc/ssl/certs/ca-certificates.crt,type=bind,readonly"
   ],
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=delegated",

@@ -7,6 +7,7 @@ RUN apt update && export DEBIAN_FRONTEND=noninteractive \
     && apt install -y --no-install-recommends \
         git \
         curl \
+        wget \
         sudo \
         ca-certificates \
         openssh-client \
@@ -18,6 +19,7 @@ RUN apt update && export DEBIAN_FRONTEND=noninteractive \
         dnsutils \
         jq \
         zsh \
+        fzf \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -30,9 +32,16 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
 
+# Persist bash history.
+RUN SNIPPET="export PROMPT_COMMAND='history -a' && export HISTFILE=/commandhistory/.bash_history" \
+    && mkdir /commandhistory \
+    && touch /commandhistory/.bash_history \
+    && chown -R $USERNAME /commandhistory
+
 # Set the default shell to zsh rather than sh
 ENV SHELL=/bin/zsh
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.2.0/zsh-in-docker.sh)" -- \
+  -t powerlevel10k/powerlevel10k \
   -p git \
   -p fzf \
   -a "source /usr/share/doc/fzf/examples/key-bindings.zsh" \

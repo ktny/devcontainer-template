@@ -10,6 +10,8 @@
       "path": "zsh"
     }
   },
+  "terminal.integrated.fontFamily": "MesloLGS NF, Consolas, 'Courier New', monospace",
+  "terminal.integrated.fontSize": 14,
 
   // Editor settings
   "editor.formatOnSave": true,
