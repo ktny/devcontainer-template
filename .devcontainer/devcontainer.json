@@ -4,7 +4,8 @@
   "service": "dev",
   "remoteUser": "vscode",
   "workspaceFolder": "/workspace",
-  
+  "postCreateCommand": "mise trust && sudo /usr/local/bin/init-firewall.sh",
+  // "postCreateCommand": "mise trust",
   "customizations": {
     "vscode": {
       "extensions": [
