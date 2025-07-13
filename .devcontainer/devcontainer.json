@@ -1,23 +1,22 @@
 {
   "name": "Dev Container Template",
-  "dockerComposeFile": "compose.yml",
-  "service": "devcontainer",
+  "dockerComposeFile": "../compose.yml",
+  "service": "dev",
+  "remoteUser": "vscode",
   "workspaceFolder": "/workspace",
   "features": {},
   "customizations": {
     "vscode": {
       "extensions": [
-        "ms-vscode.vscode-json",
-        "ms-vscode.theme-tomorrowkit",
-        "eamodio.gitlens"
+        "editorconfig.editorconfig",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "ms-python.python",
+        "charliermarsh.ruff"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash"
       }
     }
-  },
-  "mounts": [
-    "source=${localEnv:HOME}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached"
-  ],
-  "remoteUser": "vscode"
+  }
 }
