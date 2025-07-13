@@ -1,6 +1,5 @@
 [tools]
 node = "lts"
-python = "latest"
 github-cli = "latest"
 ripgrep = "latest"
 jq = "latest"
